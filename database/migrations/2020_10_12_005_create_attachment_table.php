@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttachmentsTable extends Migration
+class CreateAttachmentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,11 +15,21 @@ class CreateAttachmentsTable extends Migration
     {
         Schema::create('attachments', function (Blueprint $table) {
             $table->id();
+			$table->string('file');
 			$table->string('filename');
 			$table->integer('size');
-			$table->string('title');
-			$table->string('blob_');
-            $table->timestamps();
+			$table->string('type');
+            $table->timestamps(); //remplace created_at et update_at
+			
+			$table->foreignId('user_id')->constrained('users')
+				  ->onUpdate('cascade')
+			      ->onDelete('cascade');
+				  
+			$table->foreignId('task_id')->constrained('tasks')
+				  ->onUpdate('cascade')
+			      ->onDelete('cascade');
+				  
+			$table->engine='InnoDB';
         });
     }
 

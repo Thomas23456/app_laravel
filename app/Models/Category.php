@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Users extends Model
+class Category extends Model
 {
     use HasFactory;
-	protected $table = 'users';
-	protected $primaryKey = 'id';
 	
-	public function users()
+	public function tasks()
     {
-        return $this->hasOne('App\Models\Users');
+        return $this->hasMany('App\Models\Task');
     }
 }

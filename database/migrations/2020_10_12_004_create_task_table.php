@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTasksTable extends Migration
+class CreateTaskTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,17 @@ class CreateTasksTable extends Migration
 			$table->string('description');
 			$table->date('due_date');
 			$table->string('state');
-            $table->timestamps();
+            $table->timestamps(); //remplace created_at et update_at
+			
+			$table->foreignId('board_id')->constrained('boards')
+				  ->onUpdate('cascade')
+			      ->onDelete('cascade');
+				  
+			$table->foreignId('category_id')->constrained('categories')
+				  ->onUpdate('cascade')
+			      ->onDelete('cascade');
+				  
+			$table->engine='InnoDB';
         });
     }
 
