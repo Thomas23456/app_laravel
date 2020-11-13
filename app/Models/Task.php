@@ -19,6 +19,16 @@ class Task extends Model
         return $this->belongsTo('App\Models\Board');
     }
 	
+	public function participants()
+	{
+		return $this->hasManyThrough('App\Models\User', 'App\Models\BoardUser', 'board_id', 'id', 'board_id', 'user_id');
+	}
+	
+	public function assignedUsers()
+	{
+		return $this->belongsToMany('App\Models\User')->using('App\Models\TaskUser')->withPivot('id');
+	}
+	
 	public function comments()
     {
         return $this->hasMany('App\Models\Comment');
@@ -28,9 +38,4 @@ class Task extends Model
     {
         return $this->hasMany('App\Models\Attachment');
     }
-	
-	/*public participants()
-	{
-		return $this->belongsToMany('App\Models\TaskUser');
-	}*/
 }

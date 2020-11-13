@@ -9,6 +9,11 @@ class Board extends Model
 {
     use HasFactory;
 	
+	public function owner()
+	{
+		return $this->belongsTo('App\Models\User', 'user_id');
+	}
+	
 	public function users()
     {
         return $this->belongsToMany('App\Models\User')->using('App\Models\BoardUser')->withPivot(['user_id','board_id']);
