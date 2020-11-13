@@ -4,11 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration CreateCategoryTable : permet de faire la migration de la table Category
+ *
+ * @author : Thomas Payan
+ * @version 1.2
+ */
 class CreateCategoryTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
+     * Création de la table 'categories'
+     * Composition de la table : 'id', 'name', 'created_at', 'updated_at'
+	 *
      * @return void
      */
     public function up()
@@ -23,7 +30,7 @@ class CreateCategoryTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Suppression de la table 'categories'
      *
      * @return void
      */

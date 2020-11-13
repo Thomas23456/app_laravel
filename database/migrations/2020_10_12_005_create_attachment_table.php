@@ -4,11 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration CreateAttachmentTable : permet de faire la migration de la table Attachments
+ *
+ * @author : Thomas Payan
+ * @version 1.2
+ */
 class CreateAttachmentTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
+     * Création de la table 'attachments'
+     * Composition de la table : 'id', 'file', 'filename', 'size', 'type', 'user_id', 'task_id', 'created_at', 'updated_at'
+	 *
      * @return void
      */
     public function up()
@@ -34,7 +41,7 @@ class CreateAttachmentTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Suppression de la table 'attachments'
      *
      * @return void
      */

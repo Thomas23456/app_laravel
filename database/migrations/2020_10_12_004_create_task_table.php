@@ -4,11 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration CreateTaskTable : permet de faire la migration de la table Task
+ *
+ * @author : Thomas Payan
+ * @version 1.2
+ */
 class CreateTaskTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
+     * Création de la table 'tasks'
+     * Composition de la table : 'id', 'title', 'description', 'due_date', 'state', 'board_id', 'category_id', 'created_at', 'updated_at'
+	 *
      * @return void
      */
     public function up()
@@ -18,7 +25,7 @@ class CreateTaskTable extends Migration
 			$table->string('title');
 			$table->string('description');
 			$table->date('due_date');
-			$table->string('state');
+			$table->enum('state',['todo','ongoing','done'])->default('todo');
             $table->timestamps(); //remplace created_at et update_at
 			
 			$table->foreignId('board_id')->constrained('boards')
@@ -34,7 +41,7 @@ class CreateTaskTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Suppression de la table 'tasks'
      *
      * @return void
      */

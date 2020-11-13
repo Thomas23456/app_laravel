@@ -4,11 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration CreateUserTable : permet de faire la migration de la table User
+ *
+ * @author : Thomas Payan
+ * @version 1.2
+ */
 class CreateUserTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
+     * Création de la table 'users'
+     * Composition de la table : 'id', 'name', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'
+	 *
      * @return void
      */
     public function up()
@@ -27,7 +34,7 @@ class CreateUserTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Suppression de la table 'users'
      *
      * @return void
      */

@@ -4,11 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration CreateBoardUserTable : permet de faire la migration de la table BoardUser
+ *
+ * @author : Thomas Payan
+ * @version 1.2
+ */
 class CreateBoardUserTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
+     * Création de la table 'board_user'
+     * Composition de la table : 'id', 'user_id', 'board_id', 'created_at', 'updated_at'
+	 *
      * @return void
      */
     public function up()
@@ -25,22 +32,19 @@ class CreateBoardUserTable extends Migration
 				  ->onUpdate('cascade')
 			      ->onDelete('cascade');
 				  
-			$table->unique(['user_id','board_id']);
-				  
+			$table->unique(['user_id','board_id']); //contrainte d'unicité sur la table
+			
 			$table->engine='InnoDB';
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Suppression de la table 'board_user'
      *
      * @return void
      */
     public function down()
     {
-		Schema::dropForeign('board_user_user_id_foreign');
-		Schema::dropForeign('board_user_board_id_foreign');
-		
         Schema::dropIfExists('board_user');
     }
 }

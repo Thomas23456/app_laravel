@@ -4,11 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration CreateCommentTable : permet de faire la migration de la table Comments
+ *
+ * @author : Thomas Payan
+ * @version 1.2
+ */
 class CreateCommentTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
+     * Création de la table 'comments'
+     * Composition de la table : 'id', 'text', 'user_id', 'task_id', 'created_at', 'updated_at'
+	 *
      * @return void
      */
     public function up()
@@ -31,7 +38,7 @@ class CreateCommentTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Suppression de la table 'comments'
      *
      * @return void
      */

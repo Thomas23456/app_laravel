@@ -4,11 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration CreateTaskUserTable : permet de faire la migration de la table TaskUser
+ *
+ * @author : Thomas Payan
+ * @version 1.2
+ */
 class CreateTaskUserTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
+     * Création de la table 'task_user'
+     * Composition de la table : 'id', 'task_id', 'user_id', 'created_at', 'updated_at'
+	 *
      * @return void
      */
     public function up()
@@ -25,22 +32,19 @@ class CreateTaskUserTable extends Migration
 				  ->onUpdate('cascade')
 			      ->onDelete('cascade');
 				  
-			$table->unique(['task_id','user_id']);
-				  
+			$table->unique(['task_id','user_id']); //contrainte d'unicité sur la table
+			
 			$table->engine='InnoDB';
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Suppression de la table 'task_user'
      *
      * @return void
      */
     public function down()
     {
-		Schema::dropForeign('task_user_user_id_foreign');
-		Schema::dropForeign('task_user_task_id_foreign');
-		
         Schema::dropIfExists('task_user');
     }
 }

@@ -5,6 +5,12 @@ namespace Database\Factories;
 use App\Models\{Attachment,User,Task};
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * Factory AttachmentFactory : permet de générer un jeu de données factice de la classe Factory
+ *
+ * @author : Thomas Payan
+ * @version 1.0
+ */
 class AttachmentFactory extends Factory
 {
     /**
@@ -17,7 +23,7 @@ class AttachmentFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array
+     * @return array : 'id','file','filename','size','type','user_id','task_id','created_at','updated_at'
      */
     public function definition()
     {
